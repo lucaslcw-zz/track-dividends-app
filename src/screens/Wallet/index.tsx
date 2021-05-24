@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useMemo, useEffect, useContext } from 'react';
 
-import { IAsset } from '~/@types';
+import { IAsset, IRenderItem } from '~/@types';
 import { Context } from '~/context/Context';
 
 import Header from '~/components/Header';
@@ -32,7 +32,7 @@ const WalletScreen: React.FC = () => {
       />
       <List
         data={assets}
-        renderItem={({ item, index }: any) => (
+        renderItem={({ item, index }: IRenderItem) => (
           <Card
             ticker={item.ticker}
             quotas={item.quotas}
@@ -40,7 +40,7 @@ const WalletScreen: React.FC = () => {
             isWalletScreen
           />
         )}
-        keyExtractor={(item: any, index: any) => index.toString()}
+        keyExtractor={(item, index: number) => index.toString()}
       />
     </Container>
   );

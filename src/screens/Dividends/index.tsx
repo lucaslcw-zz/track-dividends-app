@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useMemo, useEffect, useContext } from 'react';
 
+import { IAsset, IRenderItem } from '~/@types';
 import Assets from '~/mock/Assets.json';
 import { currencyFormat } from '~/utils/Formats';
 import { Context } from '~/context/Context';
@@ -14,7 +15,7 @@ const DividendsScreen: React.FC = () => {
   const { assets, handleGetAssets } = useContext(Context);
 
   const amountReceivable = useMemo(() => {
-    return assets.reduce((accumulator: any, current: any) => {
+    return assets.reduce((accumulator: number, current: IAsset) => {
       const arrayFiltered = Assets.filter((asset) => asset.ticker === current.ticker);
       const { dividendPerShare } = arrayFiltered[0];
 
@@ -36,7 +37,7 @@ const DividendsScreen: React.FC = () => {
       />
       <List
         data={assets}
-        renderItem={({ item, index }: any) => {
+        renderItem={({ item, index }: IRenderItem) => {
           const arrayFiltered = Assets.filter((asset) => asset.ticker === item.ticker);
           const { dividendPerShare, payday } = arrayFiltered[0];
 
@@ -51,7 +52,7 @@ const DividendsScreen: React.FC = () => {
             />
           )
         }}
-        keyExtractor={(item: any, index: any) => index.toString()}
+        keyExtractor={(item, index: number) => index.toString()}
       />
     </Container>
   );

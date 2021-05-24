@@ -47,7 +47,7 @@ const Registration: React.FC = ({ route }: any) => {
             selectionColor='#000'
             keyboardType='number-pad'
             placeholderTextColor='#BDBDBD'
-            onChangeText={(text) => setAmount(text)}
+            onChangeText={(text: string) => setAmount(text)}
             value={amount}
           />
         </InputContainer>
@@ -58,14 +58,16 @@ const Registration: React.FC = ({ route }: any) => {
             selectionColor='#000'
             keyboardType='number-pad'
             placeholderTextColor='#BDBDBD'
-            onChangeText={(text) => setAveragePrice(text)}
+            onChangeText={(text: string) => setAveragePrice(text)}
             value={averagePrice}
           />
         </InputContainer>
         <ButtonContainer>
           <Button
             onPress={() => handleSaveAsset({
-              ticker, quotas: Number(amount), averagePrice: Number(averagePrice),
+              ticker,
+              quotas: Number(amount),
+              averagePrice: Number(averagePrice),
             })}
           >
             <ButtonText>Salvar</ButtonText>

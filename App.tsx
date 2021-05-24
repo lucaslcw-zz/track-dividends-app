@@ -10,7 +10,7 @@ import {
 import { ContextProvider } from '~/context/Context';
 import Routes from '~/routes/app.routes';
 
-const App = () => {
+const App: React.FC = () => {
   const [fontsLoaded] = useFonts({
     IBMPlexSans_400Regular,
     IBMPlexSans_500Medium,

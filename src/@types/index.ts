@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface ICardProps {
   ticker: string,
   quotas?: number,
@@ -34,8 +36,21 @@ export interface IContextValues {
   handleToggleIsVisible: () => void,
 }
 
+export interface IContextProviderProps {
+  children?: ReactNode,
+}
+
 export interface IAsset {
   averagePrice: number,
   quotas: number,
   ticker: string,
+}
+
+export interface IRenderItem {
+  item: IAsset|any,
+  index: number,
+}
+
+export interface ICallback {
+  (callback: IAsset[] | []): void,
 }

@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { IAsset } from '~/@types';
+
 import {
   getAssets,
   saveAsset,
@@ -8,13 +10,13 @@ import {
 } from '~/tools/LocalStorage';
 
 const useContext = () => {
-  const [assets, setAssets] = useState([]);
-  const [asset, setAsset] = useState(null);
+  const [assets, setAssets] = useState<IAsset[]|[]>([]);
+  const [asset, setAsset] = useState<IAsset|null>(null);
 
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState<boolean>(true);
 
   const handleGetAssets = () => {
-    getAssets((callback: any) => {
+    getAssets((callback: IAsset[]|[]) => {
       setAssets(callback);
     });
   }
@@ -23,20 +25,20 @@ const useContext = () => {
     setAsset(assets[indexSelected]);
   }
 
-  const handleSaveAsset = (asset: any) => {
-    saveAsset(asset, (callback: any) => {
+  const handleSaveAsset = (asset: IAsset) => {
+    saveAsset(asset, (callback: IAsset[]|[]) => {
       setAssets(callback);
     });
   }
 
-  const handleEditAsset = (asset: any, indexSelected: number) => {
-    editAsset(asset, indexSelected, (callback: any) => {
+  const handleEditAsset = (asset: IAsset, indexSelected: number) => {
+    editAsset(asset, indexSelected, (callback: IAsset[]|[]) => {
       setAssets(callback);
     });
   }
 
   const handleDeleteAsset = (indexSelected: number) => {
-    deleteAsset(indexSelected, (callback: any) => {
+    deleteAsset(indexSelected, (callback: IAsset[]|[]) => {
       setAssets(callback);
     });
   }

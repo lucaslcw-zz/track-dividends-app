@@ -62,7 +62,7 @@ const Edit: React.FC = ({ route }: any) => {
             selectionColor='#000'
             keyboardType='number-pad'
             placeholderTextColor='#BDBDBD'
-            onChangeText={(text) => setAmount(text)}
+            onChangeText={(text: string) => setAmount(text)}
             value={amount}
           />
         </InputContainer>
@@ -73,7 +73,7 @@ const Edit: React.FC = ({ route }: any) => {
             selectionColor='#000'
             keyboardType='number-pad'
             placeholderTextColor='#BDBDBD'
-            onChangeText={(text) => setAveragePrice(text)}
+            onChangeText={(text: string) => setAveragePrice(text)}
             value={averagePrice}
           />
         </InputContainer>

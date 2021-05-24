@@ -1,6 +1,6 @@
 import React, { createContext } from 'react';
 
-import { IContextValues } from '~/@types';
+import { IContextValues, IContextProviderProps } from '~/@types';
 import useContext from '~/context/hooks/useContext';
 
 const Context = createContext<IContextValues>({
@@ -15,7 +15,7 @@ const Context = createContext<IContextValues>({
   handleToggleIsVisible: () => null,
 });
 
-const ContextProvider: React.FC = ({ children }: any) => {
+const ContextProvider: React.FC = ({ children }: IContextProviderProps) => {
   const {
     assets,
     asset,

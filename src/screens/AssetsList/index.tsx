@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
+import { IRenderItem } from '~/@types';
 import Assets from '~/mock/Assets.json';
 import Card from '~/components/Card';
 
@@ -36,7 +37,7 @@ const AssetsList: React.FC = () => {
             placeholder='Digite um ativo...'
             selectionColor='#000'
             placeholderTextColor='#BDBDBD'
-            onChangeText={(text) => setAsset(text)}
+            onChangeText={(text: string) => setAsset(text)}
             autoFocus
             value={asset}
           />
@@ -47,8 +48,14 @@ const AssetsList: React.FC = () => {
           </Header>
           <List
             data={Assets}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({ item, index }: any) => <Card ticker={item.ticker} index={index} isModal />}
+            renderItem={({ item, index }: IRenderItem) => (
+              <Card
+                ticker={item.ticker}
+                index={index}
+                isModal
+              />
+            )}
+            keyExtractor={(item, index: number) => index.toString()}
           />
         </ListContainer>
       </SafeView>

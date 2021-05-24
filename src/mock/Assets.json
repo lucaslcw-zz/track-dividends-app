@@ -1,0 +1,32 @@
+[
+  {
+    "ticker": "HSML11",
+    "dividendPerShare": 0.49,
+    "dividendYield": 0.25,
+    "payday": 1621384118
+  },
+  {
+    "ticker": "BCFF11",
+    "dividendPerShare": 0.49,
+    "dividendYield": 0.25,
+    "payday": 1621384118
+  },
+  {
+    "ticker": "MXRF11",
+    "dividendPerShare": 0.49,
+    "dividendYield": 0.25,
+    "payday": 1621384118
+  },
+  {
+    "ticker": "HCTR11",
+    "dividendPerShare": 0.49,
+    "dividendYield": 0.25,
+    "payday": 1621384118
+  },
+  {
+    "ticker": "XPML11",
+    "dividendPerShare": 0.49,
+    "dividendYield": 0.25,
+    "payday": 1621384118
+  }
+]

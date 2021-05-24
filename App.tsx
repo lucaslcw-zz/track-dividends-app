@@ -1,21 +1,30 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  useFonts,
+  IBMPlexSans_400Regular,
+  IBMPlexSans_500Medium,
+  IBMPlexSans_600SemiBold
+} from '@expo-google-fonts/ibm-plex-sans';
 
-export default function App() {
+import { ContextProvider } from './src/context/Context';
+import Routes from './src/routes/app.routes';
+
+const App = () => {
+  const [fontsLoaded] = useFonts({
+    IBMPlexSans_400Regular,
+    IBMPlexSans_500Medium,
+    IBMPlexSans_600SemiBold,
+  });
+
+  if (!fontsLoaded) return null;
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+    <ContextProvider>
       <StatusBar style="auto" />
-    </View>
+      <Routes />
+    </ContextProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

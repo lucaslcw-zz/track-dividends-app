@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
+import { inDDdays } from '~/utils/Formats';
 import { ICardProps } from '~/@types';
 import { Context } from '~/context/Context';
 
@@ -41,8 +42,8 @@ const CardComponent: React.FC<ICardProps> = (props: ICardProps) => {
             <HeaderText>{isVisible ? dividendsPerShare : 'R$ ***'}</HeaderText>
           </Row>
           <Row>
-            <FooterText>{quotas} cotas</FooterText>
-            <FooterText>{payday}</FooterText>
+            <FooterText>{isVisible ? quotas : '***'} cotas</FooterText>
+            <FooterText>{inDDdays(payday)}</FooterText>
           </Row>
         </Button>
       </Container>
@@ -55,7 +56,7 @@ const CardComponent: React.FC<ICardProps> = (props: ICardProps) => {
         <Button alignItems="center" justifyContent="space-between" flexDirection="row" disabled>
           <Column>
             <HeaderText>{ticker}</HeaderText>
-            <FooterText>{quotas} cotas</FooterText>
+            <FooterText>{isVisible ? quotas : '***'} cotas</FooterText>
           </Column>
           <Row>
             <EditButton onPress={() => navigation.navigate('Edit', { index })}>

@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-import { ICardProps } from '../../@types';
-import { Context } from '../../context/Context';
+import { ICardProps } from '~/@types';
+import { Context } from '~/context/Context';
 
 import {
   Container,

@@ -1,14 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useMemo, useEffect, useContext } from 'react';
 
-import Assets from '../../mock/Assets.json';
-import { currencyFormat } from '../../utils/Formats';
-import { Context } from '../../context/Context';
+import Assets from '~/mock/Assets.json';
+import { currencyFormat } from '~/utils/Formats';
+import { Context } from '~/context/Context';
 
-import Header from '../../components/Header';
-import Card from '../../components/Card';
+import Header from '~/components/Header';
+import Card from '~/components/Card';
 
-import { Container, List } from './styles';
+import { Container, List } from '~/screens/Dividends/styles';
 
 const DividendsScreen: React.FC = () => {
   const { assets, handleGetAssets } = useContext(Context);

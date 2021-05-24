@@ -7,8 +7,8 @@ import {
   IBMPlexSans_600SemiBold
 } from '@expo-google-fonts/ibm-plex-sans';
 
-import { ContextProvider } from './src/context/Context';
-import Routes from './src/routes/app.routes';
+import { ContextProvider } from '~/context/Context';
+import Routes from '~/routes/app.routes';
 
 const App = () => {
   const [fontsLoaded] = useFonts({

@@ -5,7 +5,7 @@ import {
   saveAsset,
   editAsset,
   deleteAsset,
-} from '../../tools/AssetCRUD';
+} from '~/tools/AssetCRUD';
 
 const useContext = () => {
   const [assets, setAssets] = useState([]);

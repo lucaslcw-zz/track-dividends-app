@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-import { Context } from '../../context/Context';
+import { Context } from '~/context/Context';
 
 import {
   Container,
@@ -17,7 +17,7 @@ import {
   ButtonContainer,
   Button,
   ButtonText
-} from './styles';
+} from '~/screens/Registration/styles';
 
 const Registration: React.FC = ({ route }: any) => {
   const { ticker } = route.params;

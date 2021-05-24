@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import { FontAwesome, Entypo } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-import { IHeaderProps } from '../../@types';
-import { Context } from '../../context/Context';
-import { currencyFormat } from '../../utils/Formats';
-import Months from '../../mock/Months.json';
+import { IHeaderProps } from '~/@types';
+import { Context } from '~/context/Context';
+import { currencyFormat } from '~/utils/Formats';
+import Months from '~/mock/Months.json';
 
 import {
 	Container,

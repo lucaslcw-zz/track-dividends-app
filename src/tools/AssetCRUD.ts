@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { IAsset } from '../@types';
+import { IAsset } from '~/@types';
 
 export const getAssets = async (callback: any) => {
   AsyncStorage.getItem('@assets')

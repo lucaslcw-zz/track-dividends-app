@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-import Assets from '../../mock/Assets.json';
-import Card from '../../components/Card';
+import Assets from '~/mock/Assets.json';
+import Card from '~/components/Card';
 
 import {
   Container,
@@ -16,7 +16,7 @@ import {
   Header,
   Title,
   List,
-} from './styles';
+} from '~/screens/AssetsList/styles';
 
 const AssetsList: React.FC = () => {
   const [asset, setAsset] = useState<string>('');

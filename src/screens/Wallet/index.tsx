@@ -1,13 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useMemo, useEffect, useContext } from 'react';
 
-import { IAsset } from '../../@types';
-import { Context } from '../../context/Context';
+import { IAsset } from '~/@types';
+import { Context } from '~/context/Context';
 
-import Header from '../../components/Header';
-import Card from '../../components/Card';
+import Header from '~/components/Header';
+import Card from '~/components/Card';
 
-import { Container, List } from './styles';
+import { Container, List } from '~/screens/Wallet/styles';
 
 const WalletScreen: React.FC = () => {
   const { assets, handleGetAssets } = useContext(Context);

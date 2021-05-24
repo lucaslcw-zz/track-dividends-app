@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-import { IButtonProps } from '../../@types';
+import { IButtonProps } from '~/@types';
 
 export const Container = styled.View.attrs({
   shadowColor: "#000",

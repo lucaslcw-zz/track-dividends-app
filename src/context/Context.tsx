@@ -1,7 +1,7 @@
 import React, { createContext } from 'react';
 
-import { IContextValues } from '../@types';
-import useContext from './hooks/useContext';
+import { IContextValues } from '~/@types';
+import useContext from '~/context/hooks/useContext';
 
 const Context = createContext<IContextValues>({
   assets: [],

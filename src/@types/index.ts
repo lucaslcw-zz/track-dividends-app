@@ -25,13 +25,13 @@ export interface IHeaderProps {
 }
 
 export interface IContextValues {
-  assets: any[],
-  asset: null,
+  assets: IAsset[],
+  asset: any,
   isVisible: boolean,
   handleGetAssets: () => void,
   handleGetAsset: (indexSelected: number) => void,
-  handleSaveAsset: (asset: any) => void,
-  handleEditAsset: (asset: any, indexSelected: number) => void,
+  handleSaveAsset: (asset: IAsset) => void,
+  handleEditAsset: (asset: IAsset, indexSelected: number) => void,
   handleDeleteAsset: (indexSelected: number) => void,
   handleToggleIsVisible: () => void,
 }

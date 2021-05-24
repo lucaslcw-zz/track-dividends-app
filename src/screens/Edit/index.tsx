@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
+import { resetStackNavigation } from '~/tools/ResetNavigation';
 import { Context } from '~/context/Context';
 
 import {
@@ -29,6 +30,11 @@ const Edit: React.FC = ({ route }: any) => {
   const [averagePrice, setAveragePrice] = useState<string>('');
 
   const navigation = useNavigation();
+
+  const handleOnSubmitEditAsset = () => {
+    handleEditAsset({ ticker, quotas: Number(amount), averagePrice: Number(averagePrice) }, index);
+    resetStackNavigation(navigation);
+  }
 
   useEffect(() => {
     if (asset !== null) {
@@ -78,16 +84,7 @@ const Edit: React.FC = ({ route }: any) => {
           />
         </InputContainer>
         <ButtonContainer>
-          <Button
-            onPress={() => handleEditAsset(
-              {
-                ticker,
-                quotas: Number(amount),
-                averagePrice: Number(averagePrice)
-              },
-              index,
-            )}
-          >
+          <Button onPress={handleOnSubmitEditAsset}>
             <ButtonText>Salvar Alterações</ButtonText>
           </Button>
         </ButtonContainer>

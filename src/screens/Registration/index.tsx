@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
+import { resetStackNavigation } from '~/tools/ResetNavigation';
 import { Context } from '~/context/Context';
 
 import {
@@ -28,6 +29,11 @@ const Registration: React.FC = ({ route }: any) => {
   const [averagePrice, setAveragePrice] = useState<string>('');
 
   const navigation = useNavigation();
+
+  const handleOnSubmitSaveAsset = () => {
+    handleSaveAsset({ ticker, quotas: Number(amount), averagePrice: Number(averagePrice) });
+    resetStackNavigation(navigation);
+  }
 
   return (
     <Container>
@@ -63,13 +69,7 @@ const Registration: React.FC = ({ route }: any) => {
           />
         </InputContainer>
         <ButtonContainer>
-          <Button
-            onPress={() => handleSaveAsset({
-              ticker,
-              quotas: Number(amount),
-              averagePrice: Number(averagePrice),
-            })}
-          >
+          <Button onPress={handleOnSubmitSaveAsset}>
             <ButtonText>Salvar</ButtonText>
           </Button>
         </ButtonContainer>

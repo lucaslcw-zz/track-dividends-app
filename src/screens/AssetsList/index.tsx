@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { AntDesign } from '@expo/vector-icons';
 
 import { IRenderItem } from '~/@types';
 import Assets from '~/mock/Assets.json';
@@ -12,6 +13,7 @@ import {
   Actions,
   CloseButton,
   InputContainer,
+  Icon,
   Input,
   ListContainer,
   Header,
@@ -41,6 +43,9 @@ const AssetsList: React.FC = () => {
           </CloseButton>
         </Actions>
         <InputContainer>
+          <Icon>
+            <AntDesign name="search1" size={20} color="black" />
+          </Icon>
           <Input
             placeholder='Digite um ativo...'
             selectionColor='#000'

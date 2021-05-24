@@ -32,16 +32,30 @@ export const InputContainer = styled.View.attrs({
   shadowRadius: 3.84,
   elevation: 5,
 })`
+  flex-direction: row;
   height: 40px;
   padding-right: 15px;
   padding-left: 15px;
   margin-top: 25px;
 `;
 
+export const Icon = styled.View`
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+`;
+
 export const Input = styled.TextInput`
   background: #fff;
-  border-radius: 10px;
-  padding: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
   flex: 1;
   height: 100%;
   font-size: 16px;

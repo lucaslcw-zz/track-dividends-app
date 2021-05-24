@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -24,6 +24,14 @@ const AssetsList: React.FC = () => {
 
   const navigation = useNavigation();
 
+  const filteredData = useMemo(() => {
+    if (asset !== '') {
+      return Assets.filter((item) => item.ticker.includes(asset));
+    } else {
+      return Assets;
+    }
+  }, [asset])
+
   return (
     <Container>
       <SafeView>
@@ -37,7 +45,7 @@ const AssetsList: React.FC = () => {
             placeholder='Digite um ativo...'
             selectionColor='#000'
             placeholderTextColor='#BDBDBD'
-            onChangeText={(text: string) => setAsset(text)}
+            onChangeText={(text: string) => setAsset(text.toUpperCase())}
             autoFocus
             value={asset}
           />
@@ -47,7 +55,7 @@ const AssetsList: React.FC = () => {
             <Title>Selecione o ativo</Title>
           </Header>
           <List
-            data={Assets}
+            data={filteredData}
             renderItem={({ item, index }: IRenderItem) => (
               <Card
                 ticker={item.ticker}

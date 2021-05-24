@@ -44,6 +44,7 @@ const AssetsList: React.FC = () => {
           <Input
             placeholder='Digite um ativo...'
             selectionColor='#000'
+            maxLength={10}
             placeholderTextColor='#BDBDBD'
             onChangeText={(text: string) => setAsset(text.toUpperCase())}
             autoFocus

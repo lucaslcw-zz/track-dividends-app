@@ -51,6 +51,7 @@ const Registration: React.FC = ({ route }: any) => {
           <Input
             placeholder='Digite a quantidade de cotas...'
             selectionColor='#000'
+            maxLength={10}
             keyboardType='number-pad'
             placeholderTextColor='#BDBDBD'
             onChangeText={(text: string) => setAmount(text)}
@@ -62,6 +63,7 @@ const Registration: React.FC = ({ route }: any) => {
           <Input
             placeholder='Digite o preço médio das cotas...'
             selectionColor='#000'
+            maxLength={10}
             keyboardType='number-pad'
             placeholderTextColor='#BDBDBD'
             onChangeText={(text: string) => setAveragePrice(text)}

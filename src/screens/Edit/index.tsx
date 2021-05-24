@@ -67,6 +67,7 @@ const Edit: React.FC = ({ route }: any) => {
             placeholder='Digite a quantidade de cotas...'
             selectionColor='#000'
             keyboardType='number-pad'
+            maxLength={10}
             placeholderTextColor='#BDBDBD'
             onChangeText={(text: string) => setAmount(text)}
             value={amount}
@@ -78,6 +79,7 @@ const Edit: React.FC = ({ route }: any) => {
             placeholder='Digite o preço médio das cotas...'
             selectionColor='#000'
             keyboardType='number-pad'
+            maxLength={10}
             placeholderTextColor='#BDBDBD'
             onChangeText={(text: string) => setAveragePrice(text)}
             value={averagePrice}

@@ -32,7 +32,7 @@ const Registration: React.FC = ({ route }: any) => {
 
   const handleOnSubmitSaveAsset = () => {
     handleSaveAsset({ ticker, quotas: Number(amount), averagePrice: Number(averagePrice) });
-    resetStackNavigation(navigation);
+    resetStackNavigation(navigation, 'TabNavigatorRoutes');
   }
 
   return (

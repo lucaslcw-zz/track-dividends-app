@@ -1,55 +1,63 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { IAsset, ICallback } from '~/@types';
+import { IAsset } from '~/@types';
 
-export const getAssets = async (callback: ICallback) => {
-  AsyncStorage.getItem('@assets')
-    .then((result) => {
-      if (result !== null) return callback(JSON.parse(result));
+export const getAssets = async (): Promise<IAsset[]|[]> => {
+  return new Promise((resolve) => {
+    AsyncStorage.getItem('@assets')
+      .then((result) => {
+        if (result !== null) return resolve(JSON.parse(result));
 
-      return callback([]);
-    });
+        return resolve([]);
+      });
+  });
 }
 
-export const editAsset = async (asset: IAsset, indexSelected: number, callback: ICallback) => {
-  AsyncStorage.getItem('@assets')
-    .then((result) => {
-      if (result !== null) {
-        const assetsArray = JSON.parse(result);
+export const editAsset = async (asset: IAsset, indexSelected: number): Promise<IAsset[]> => {
+  return new Promise((resolve) => {
+    AsyncStorage.getItem('@assets')
+      .then((result) => {
+        if (result !== null) {
+          const assetsArray = JSON.parse(result);
 
-        assetsArray[indexSelected] = asset;
+          assetsArray[indexSelected] = asset;
 
-        AsyncStorage.setItem('@assets', JSON.stringify(assetsArray));
-        callback(assetsArray);
-      }
-    })
+          AsyncStorage.setItem('@assets', JSON.stringify(assetsArray));
+          resolve(assetsArray);
+        }
+      });
+  });
 }
 
-export const saveAsset = async (asset: IAsset, callback: ICallback) => {
-  AsyncStorage.getItem('@assets')
-    .then((result) => {
-      if (result !== null) {
-        const assetsArray = JSON.parse(result);
-        assetsArray.push(asset);
+export const saveAsset = async (asset: IAsset): Promise<IAsset[]> => {
+  return new Promise((resolve) => {
+    AsyncStorage.getItem('@assets')
+      .then((result) => {
+        if (result !== null) {
+          const assetsArray = JSON.parse(result);
+          assetsArray.push(asset);
 
-        AsyncStorage.setItem('@assets', JSON.stringify(assetsArray));
-        callback(assetsArray);
-      } else {
-        AsyncStorage.setItem('@assets', JSON.stringify([{ ...asset }]));
-        callback([{ ...asset }]);
-      }
-    });
+          AsyncStorage.setItem('@assets', JSON.stringify(assetsArray));
+          resolve(assetsArray);
+        } else {
+          AsyncStorage.setItem('@assets', JSON.stringify([{ ...asset }]));
+          resolve([{ ...asset }]);
+        }
+      });
+  });
 }
 
-export const deleteAsset = async (indexSelected: number, callback: ICallback) => {
-  AsyncStorage.getItem('@assets')
-    .then((result) => {
-      if (result !== null) {
-        const assetsArray = JSON.parse(result);
-        const newAssetsArray = assetsArray.filter((item: IAsset, index: number) => index !== indexSelected);
-        
-        AsyncStorage.setItem('@assets', JSON.stringify(newAssetsArray));
-        callback(newAssetsArray);
-      }
-    });
+export const deleteAsset = async (indexSelected: number): Promise<IAsset[]|[]> => {
+  return new Promise((resolve) => {
+    AsyncStorage.getItem('@assets')
+      .then((result) => {
+        if (result !== null) {
+          const assetsArray = JSON.parse(result);
+          const newAssetsArray = assetsArray.filter((item: IAsset, index: number) => index !== indexSelected);
+          
+          AsyncStorage.setItem('@assets', JSON.stringify(newAssetsArray));
+          resolve(newAssetsArray);
+        }
+      });
+  });
 }

@@ -1,30 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import {
-  useFonts,
-  IBMPlexSans_400Regular,
-  IBMPlexSans_500Medium,
-  IBMPlexSans_600SemiBold
-} from '@expo-google-fonts/ibm-plex-sans';
 
 import { ContextProvider } from '~/context/Context';
 import Routes from '~/routes/app.routes';
 
-const App: React.FC = () => {
-  const [fontsLoaded] = useFonts({
-    IBMPlexSans_400Regular,
-    IBMPlexSans_500Medium,
-    IBMPlexSans_600SemiBold,
-  });
-
-  if (!fontsLoaded) return null;
-
-  return (
-    <ContextProvider>
-      <StatusBar style="auto" />
-      <Routes />
-    </ContextProvider>
-  );
-}
+const App: React.FC = () => (
+  <ContextProvider>
+    <Routes />
+  </ContextProvider>
+);
 
 export default App;

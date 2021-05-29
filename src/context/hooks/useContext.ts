@@ -15,37 +15,31 @@ const useContext = () => {
 
   const [isVisible, setIsVisible] = useState<boolean>(true);
 
-  const handleGetAssets = () => {
-    getAssets((callback: IAsset[]|[]) => {
-      setAssets(callback);
-    });
+  const handleGetAssets = async () => {
+    getAssets()
+      .then((result: IAsset[]|[]) => setAssets(result));
   }
 
-  const handleGetAsset = (indexSelected: number) => {
+  const handleGetAsset = async (indexSelected: number) => {
     setAsset(assets[indexSelected]);
   }
 
-  const handleSaveAsset = (asset: IAsset) => {
-    saveAsset(asset, (callback: IAsset[]|[]) => {
-      setAssets(callback);
-    });
+  const handleSaveAsset = async (asset: IAsset) => {
+    saveAsset(asset)
+      .then((result: IAsset[]) => setAssets(result));
   }
 
-  const handleEditAsset = (asset: IAsset, indexSelected: number) => {
-    editAsset(asset, indexSelected, (callback: IAsset[]|[]) => {
-      setAssets(callback);
-    });
+  const handleEditAsset = async (asset: IAsset, indexSelected: number) => {
+    editAsset(asset, indexSelected)
+      .then((result: IAsset[]) => setAssets(result));
   }
 
-  const handleDeleteAsset = (indexSelected: number) => {
-    deleteAsset(indexSelected, (callback: IAsset[]|[]) => {
-      setAssets(callback);
-    });
+  const handleDeleteAsset = async (indexSelected: number) => {
+    deleteAsset(indexSelected)
+      .then((result: IAsset[]|[]) => setAssets(result));
   }
 
-  const handleToggleIsVisible = () => {
-    setIsVisible(!isVisible);
-  };
+  const handleToggleIsVisible = () => setIsVisible(!isVisible);
 
   return {
     assets,

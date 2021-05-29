@@ -12,7 +12,7 @@ import Card from '~/components/Card';
 import { Container, List } from '~/screens/Dividends/styles';
 
 const DividendsScreen: React.FC = () => {
-  const { assets, handleGetAssets } = useContext(Context);
+  const { assets } = useContext(Context);
 
   const amountReceivable = useMemo(() => {
     return assets.reduce((accumulator: number, current: IAsset) => {
@@ -22,10 +22,6 @@ const DividendsScreen: React.FC = () => {
       return accumulator + (current.quotas * dividendPerShare);
     }, 0);
   }, [assets]);
-
-  useEffect(() => {
-    handleGetAssets();
-  }, []);
 
   return (
     <Container>

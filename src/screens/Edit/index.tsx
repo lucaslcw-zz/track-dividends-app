@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { StatusBar } from 'expo-status-bar';
 
 import { resetStackNavigation } from '~/tools/ResetNavigation';
 import { Context } from '~/context/Context';
 
 import {
   Container,
-  SafeView,
   Actions,
   CloseButton,
   InputContainer,
@@ -52,45 +52,44 @@ const Edit: React.FC = ({ route }: any) => {
 
   return (
     <Container>
-      <SafeView>
-        <Actions>
-          <CloseButton onPress={() => navigation.goBack()}>
-            <Ionicons name="arrow-back-circle" size={32} color="black" />
-          </CloseButton>
-        </Actions>
-        <Header>
-          <Title>{ticker}</Title>
-        </Header>
-        <Label>Quantidade</Label>
-        <InputContainer>
-          <Input
-            placeholder='Digite a quantidade de cotas...'
-            selectionColor='#000'
-            keyboardType='number-pad'
-            maxLength={10}
-            placeholderTextColor='#BDBDBD'
-            onChangeText={(text: string) => setAmount(text)}
-            value={amount}
-          />
-        </InputContainer>
-        <Label>Preço Médio</Label>
-        <InputContainer>
-          <Input
-            placeholder='Digite o preço médio das cotas...'
-            selectionColor='#000'
-            keyboardType='number-pad'
-            maxLength={10}
-            placeholderTextColor='#BDBDBD'
-            onChangeText={(text: string) => setAveragePrice(text)}
-            value={averagePrice}
-          />
-        </InputContainer>
-        <ButtonContainer>
-          <Button onPress={handleOnSubmitEditAsset}>
-            <ButtonText>Salvar Alterações</ButtonText>
-          </Button>
-        </ButtonContainer>
-      </SafeView>
+      <StatusBar style='dark' />
+      <Actions>
+        <CloseButton onPress={() => navigation.goBack()}>
+          <Ionicons name="arrow-back-circle" size={32} color="black" />
+        </CloseButton>
+      </Actions>
+      <Header>
+        <Title>{ticker}</Title>
+      </Header>
+      <Label>Quantidade</Label>
+      <InputContainer>
+        <Input
+          placeholder='Digite a quantidade de cotas...'
+          selectionColor='#000'
+          keyboardType='number-pad'
+          maxLength={10}
+          placeholderTextColor='#BDBDBD'
+          onChangeText={(text: string) => setAmount(text)}
+          value={amount}
+        />
+      </InputContainer>
+      <Label>Preço Médio</Label>
+      <InputContainer>
+        <Input
+          placeholder='Digite o preço médio das cotas...'
+          selectionColor='#000'
+          keyboardType='number-pad'
+          maxLength={10}
+          placeholderTextColor='#BDBDBD'
+          onChangeText={(text: string) => setAveragePrice(text)}
+          value={averagePrice}
+        />
+      </InputContainer>
+      <ButtonContainer>
+        <Button onPress={handleOnSubmitEditAsset}>
+          <ButtonText>Salvar Alterações</ButtonText>
+        </Button>
+      </ButtonContainer>
     </Container>
   );
 }

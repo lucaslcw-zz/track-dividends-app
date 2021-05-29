@@ -1,5 +1,5 @@
+import React, { useMemo, useContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import React, { useMemo, useEffect, useContext } from 'react';
 
 import { IAsset, IRenderItem } from '~/@types';
 import Assets from '~/mock/Assets.json';

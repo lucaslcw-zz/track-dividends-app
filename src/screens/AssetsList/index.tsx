@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
+import { StatusBar } from 'expo-status-bar';
 
 import { IRenderItem } from '~/@types';
 import Assets from '~/mock/Assets.json';
@@ -9,7 +10,6 @@ import Card from '~/components/Card';
 
 import {
   Container,
-  SafeView,
   Actions,
   CloseButton,
   InputContainer,
@@ -36,43 +36,42 @@ const AssetsList: React.FC = () => {
 
   return (
     <Container>
-      <SafeView>
-        <Actions>
-          <CloseButton onPress={() => navigation.goBack()}>
-            <Ionicons name="arrow-back-circle" size={32} color="black" />
-          </CloseButton>
-        </Actions>
-        <InputContainer>
-          <Icon>
-            <AntDesign name="search1" size={20} color="black" />
-          </Icon>
-          <Input
-            placeholder='Digite um ativo...'
-            selectionColor='#000'
-            maxLength={10}
-            placeholderTextColor='#BDBDBD'
-            onChangeText={(text: string) => setAsset(text.toUpperCase())}
-            autoFocus
-            value={asset}
-          />
-        </InputContainer>
-        <ListContainer>
-          <Header>
-            <Title>Selecione o ativo</Title>
-          </Header>
-          <List
-            data={filteredData}
-            renderItem={({ item, index }: IRenderItem) => (
-              <Card
-                ticker={item.ticker}
-                index={index}
-                isModal
-              />
-            )}
-            keyExtractor={(item, index: number) => index.toString()}
-          />
-        </ListContainer>
-      </SafeView>
+      <StatusBar style='dark' />
+      <Actions>
+        <CloseButton onPress={() => navigation.goBack()}>
+          <Ionicons name="arrow-back-circle" size={32} color="black" />
+        </CloseButton>
+      </Actions>
+      <InputContainer>
+        <Icon>
+          <AntDesign name="search1" size={20} color="black" />
+        </Icon>
+        <Input
+          placeholder='Digite um ativo...'
+          selectionColor='#000'
+          maxLength={10}
+          placeholderTextColor='#BDBDBD'
+          onChangeText={(text: string) => setAsset(text.toUpperCase())}
+          autoFocus
+          value={asset}
+        />
+      </InputContainer>
+      <ListContainer>
+        <Header>
+          <Title>Selecione o ativo</Title>
+        </Header>
+        <List
+          data={filteredData}
+          renderItem={({ item, index }: IRenderItem) => (
+            <Card
+              ticker={item.ticker}
+              index={index}
+              isModal
+            />
+          )}
+          keyExtractor={(item, index: number) => index.toString()}
+        />
+      </ListContainer>
     </Container>
   );
 }

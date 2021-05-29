@@ -1,5 +1,5 @@
+import React, { useMemo, useContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import React, { useMemo, useEffect, useContext } from 'react';
 
 import { IAsset, IRenderItem } from '~/@types';
 import { Context } from '~/context/Context';
@@ -20,7 +20,7 @@ const WalletScreen: React.FC = () => {
 
   return (
     <Container>
-      <StatusBar style="auto" />
+      <StatusBar style='dark' />
       <Header
         title="Valor total investido até o mês de"
         value={investedBalance}

@@ -1,13 +1,8 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
   background: #F7F7F7;
   flex: 1;
-`;
-
-export const SafeView = styled.SafeAreaView`
-  flex: 1;
-  background: #F7F7F7;
 `;
 
 export const Actions = styled.View`

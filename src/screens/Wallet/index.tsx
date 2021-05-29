@@ -10,17 +10,13 @@ import Card from '~/components/Card';
 import { Container, List } from '~/screens/Wallet/styles';
 
 const WalletScreen: React.FC = () => {
-  const { assets, handleGetAssets } = useContext(Context);
+  const { assets } = useContext(Context);
 
   const investedBalance: number = useMemo(() => {
     return assets.reduce((accumulator: number, current: IAsset) => {
       return accumulator + (current.quotas * current.averagePrice);
     }, 0);
   }, [assets]);
-
-  useEffect(() => {
-    handleGetAssets();
-  }, []);
 
   return (
     <Container>

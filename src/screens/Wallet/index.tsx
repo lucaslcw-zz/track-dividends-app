@@ -2,7 +2,7 @@ import React, { useMemo, useContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
 
 import { IAsset, IRenderItem } from '~/@types';
-import { Context } from '~/context/Context';
+import { AssetContext } from '~/context/AssetContext';
 
 import Header from '~/components/Header';
 import Card from '~/components/Card';
@@ -10,7 +10,7 @@ import Card from '~/components/Card';
 import { Container, List } from '~/screens/Wallet/styles';
 
 const WalletScreen: React.FC = () => {
-  const { assets } = useContext(Context);
+  const { assets } = useContext(AssetContext);
 
   const investedBalance: number = useMemo(() => {
     return assets.reduce((accumulator: number, current: IAsset) => {

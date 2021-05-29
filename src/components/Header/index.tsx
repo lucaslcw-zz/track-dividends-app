@@ -3,7 +3,7 @@ import { FontAwesome, Entypo } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 import { IHeaderProps } from '~/@types';
-import { Context } from '~/context/Context';
+import { SettingContext } from '~/context/SettingContext';
 import { currencyFormat } from '~/utils/CurrencyFormats';
 import Months from '~/mock/Months.json';
 
@@ -26,7 +26,7 @@ const HeaderComponent: React.FC<IHeaderProps> = (props: IHeaderProps) => {
 		isDividendsScreen,
 	} = props;
 
-	const { isVisible, handleToggleIsVisible } = useContext(Context);
+	const { isVisible, handleToggleIsVisible } = useContext(SettingContext);
 
 	const navigation = useNavigation();
 

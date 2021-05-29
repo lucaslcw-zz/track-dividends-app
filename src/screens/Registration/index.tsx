@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 
 import { resetStackNavigation } from '~/tools/ResetNavigation';
-import { Context } from '~/context/Context';
+import { AssetContext } from '~/context/AssetContext';
 
 import {
   Container,
@@ -23,7 +23,7 @@ import {
 const Registration: React.FC = ({ route }: any) => {
   const { ticker } = route.params;
 
-  const { handleSaveAsset } = useContext(Context);
+  const { handleSaveAsset } = useContext(AssetContext);
 
   const [amount, setAmount] = useState<string>('');
   const [averagePrice, setAveragePrice] = useState<string>('');

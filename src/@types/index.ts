@@ -24,19 +24,26 @@ export interface IHeaderProps {
   isDividendsScreen?: boolean,
 }
 
-export interface IContextValues {
+export interface IAssetContext {
   assets: IAsset[],
   asset: any,
-  isVisible: boolean,
   handleGetAssets: () => void,
   handleGetAsset: (indexSelected: number) => void,
   handleSaveAsset: (asset: IAsset) => void,
   handleEditAsset: (asset: IAsset, indexSelected: number) => void,
   handleDeleteAsset: (indexSelected: number) => void,
+}
+
+export interface ISettingContext {
+  isVisible: boolean,
   handleToggleIsVisible: () => void,
 }
 
-export interface IContextProviderProps {
+export interface ISettingContextProviderProps {
+  children?: ReactNode,
+}
+
+export interface IAssetContextProviderProps {
   children?: ReactNode,
 }
 

@@ -4,7 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import { IAsset, IRenderItem } from '~/@types';
 import Assets from '~/mock/Assets.json';
 import { currencyFormat } from '~/utils/CurrencyFormats';
-import { Context } from '~/context/Context';
+import { AssetContext } from '~/context/AssetContext';
 
 import Header from '~/components/Header';
 import Card from '~/components/Card';
@@ -12,7 +12,7 @@ import Card from '~/components/Card';
 import { Container, List } from '~/screens/Dividends/styles';
 
 const DividendsScreen: React.FC = () => {
-  const { assets } = useContext(Context);
+  const { assets } = useContext(AssetContext);
 
   const amountReceivable = useMemo(() => {
     return assets.reduce((accumulator: number, current: IAsset) => {

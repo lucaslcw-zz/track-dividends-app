@@ -1,12 +1,15 @@
 import React from 'react';
 
-import { ContextProvider } from '~/context/Context';
+import { AssetProvider } from '~/context/AssetContext';
+import { SettingProvider } from '~/context/SettingContext';
 import Routes from '~/routes/app.routes';
 
 const App: React.FC = () => (
-  <ContextProvider>
-    <Routes />
-  </ContextProvider>
+  <SettingProvider>
+    <AssetProvider>
+      <Routes />
+    </AssetProvider>
+  </SettingProvider>
 );
 
 export default App;

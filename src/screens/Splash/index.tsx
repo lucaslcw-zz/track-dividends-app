@@ -9,12 +9,12 @@ import {
 } from '@expo-google-fonts/ibm-plex-sans';
 
 import { resetStackNavigation } from '~/tools/ResetNavigation';
-import { Context } from '~/context/Context';
+import { AssetContext } from '~/context/AssetContext';
 
 import { Container, Title } from '~/screens/Splash/styles';
 
 const Splash = () => {
-  const { handleGetAssets } = useContext(Context);
+  const { handleGetAssets } = useContext(AssetContext);
 
   const navigation = useNavigation();
 

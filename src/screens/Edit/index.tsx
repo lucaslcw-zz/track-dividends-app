@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 
 import { resetStackNavigation } from '~/tools/ResetNavigation';
-import { Context } from '~/context/Context';
+import { AssetContext } from '~/context/AssetContext';
 
 import {
   Container,
@@ -23,7 +23,7 @@ import {
 const Edit: React.FC = ({ route }: any) => {
   const { index } = route.params;
 
-  const { asset, handleGetAsset, handleEditAsset } = useContext(Context);
+  const { asset, handleGetAsset, handleEditAsset } = useContext(AssetContext);
 
   const [ticker, setTicker] = useState<string>('');
   const [amount, setAmount] = useState<string>('');

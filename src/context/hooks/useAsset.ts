@@ -13,8 +13,6 @@ const useContext = () => {
   const [assets, setAssets] = useState<IAsset[]|[]>([]);
   const [asset, setAsset] = useState<IAsset|null>(null);
 
-  const [isVisible, setIsVisible] = useState<boolean>(true);
-
   const handleGetAssets = async () => {
     getAssets()
       .then((result: IAsset[]|[]) => setAssets(result));
@@ -39,18 +37,14 @@ const useContext = () => {
       .then((result: IAsset[]|[]) => setAssets(result));
   }
 
-  const handleToggleIsVisible = () => setIsVisible(!isVisible);
-
   return {
     assets,
     asset,
-    isVisible,
     handleGetAssets,
     handleGetAsset,
     handleSaveAsset,
     handleEditAsset,
     handleDeleteAsset,
-    handleToggleIsVisible,
   };
 }
 

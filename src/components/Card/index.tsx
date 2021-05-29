@@ -4,7 +4,8 @@ import { useNavigation } from '@react-navigation/native';
 
 import { inDDdays } from '~/utils/DateFormats';
 import { ICardProps } from '~/@types';
-import { Context } from '~/context/Context';
+import { AssetContext } from '~/context/AssetContext';
+import { SettingContext } from '~/context/SettingContext';
 
 import {
   Container,
@@ -29,7 +30,8 @@ const CardComponent: React.FC<ICardProps> = (props: ICardProps) => {
     isModal,
   } = props;
 
-  const { isVisible, handleDeleteAsset } = useContext(Context);
+  const { handleDeleteAsset } = useContext(AssetContext);
+  const { isVisible } = useContext(SettingContext);
 
   const navigation = useNavigation();
 

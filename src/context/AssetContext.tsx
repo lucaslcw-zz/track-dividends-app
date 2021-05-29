@@ -1,50 +1,44 @@
 import React, { createContext } from 'react';
 
-import { IContextValues, IContextProviderProps } from '~/@types';
-import useContext from '~/context/hooks/useContext';
+import { IAssetContext, IAssetContextProviderProps } from '~/@types';
+import useAsset from '~/context/hooks/useAsset';
 
-const Context = createContext<IContextValues>({
+const AssetContext = createContext<IAssetContext>({
   assets: [],
   asset: null,
-  isVisible: true,
   handleGetAssets: () => null,
   handleGetAsset: () => null,
   handleSaveAsset: () => null,
   handleEditAsset: () => null,
   handleDeleteAsset: () => null,
-  handleToggleIsVisible: () => null,
 });
 
-const ContextProvider: React.FC = ({ children }: IContextProviderProps) => {
+const AssetProvider: React.FC = ({ children }: IAssetContextProviderProps) => {
   const {
     assets,
     asset,
-    isVisible,
     handleGetAssets,
     handleGetAsset,
     handleSaveAsset,
     handleEditAsset,
     handleDeleteAsset,
-    handleToggleIsVisible,
-  } = useContext();
+  } = useAsset();
 
   return (
-    <Context.Provider
+    <AssetContext.Provider
       value={{
         assets,
         asset,
-        isVisible,
         handleGetAssets,
         handleGetAsset,
         handleSaveAsset,
         handleEditAsset,
         handleDeleteAsset,
-        handleToggleIsVisible,
       }}
     >
       {children}
-    </Context.Provider>
+    </AssetContext.Provider>
   );
 }
 
-export { Context, ContextProvider };
+export { AssetContext, AssetProvider };

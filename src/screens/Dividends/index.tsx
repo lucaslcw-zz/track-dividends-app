@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 
 import { IAsset, IRenderItem } from '~/@types';
 import Assets from '~/mock/Assets.json';
-import { currencyFormat } from '~/utils/Formats';
+import { currencyFormat } from '~/utils/DateFormats';
 import { Context } from '~/context/Context';
 
 import Header from '~/components/Header';

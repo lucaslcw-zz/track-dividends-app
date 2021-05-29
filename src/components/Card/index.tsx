@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-import { inDDdays } from '~/utils/Formats';
+import { inDDdays } from '~/utils/DateFormats';
 import { ICardProps } from '~/@types';
 import { Context } from '~/context/Context';
 

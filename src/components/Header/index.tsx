@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import { IHeaderProps } from '~/@types';
 import { Context } from '~/context/Context';
-import { currencyFormat } from '~/utils/Formats';
+import { currencyFormat } from '~/utils/CurrencyFormats';
 import Months from '~/mock/Months.json';
 
 import {

@@ -50,7 +50,3 @@ export interface IRenderItem {
   item: IAsset|any,
   index: number,
 }
-
-export interface ICallback {
-  (callback: IAsset[] | []): void,
-}

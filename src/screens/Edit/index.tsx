@@ -33,7 +33,7 @@ const Edit: React.FC = ({ route }: any) => {
 
   const handleOnSubmitEditAsset = () => {
     handleEditAsset({ ticker, quotas: Number(amount), averagePrice: Number(averagePrice) }, index);
-    resetStackNavigation(navigation);
+    resetStackNavigation(navigation, 'TabNavigatorRoutes');
   }
 
   useEffect(() => {

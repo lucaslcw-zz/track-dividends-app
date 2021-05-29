@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { FontAwesome, Entypo } from '@expo/vector-icons';
 
+import Splash from '~/screens/Splash';
 import Dividends from '~/screens/Dividends';
 import Wallet from '~/screens/Wallet';
 import Registration from '~/screens/Registration';
@@ -38,7 +39,12 @@ const TabNavigatorRoutes = () => (
 
 const AppRoutes = () => (
   <NavigationContainer>
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName='Splash'>
+      <Stack.Screen
+        name='Splash'
+        component={Splash}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name='TabNavigatorRoutes'
         component={TabNavigatorRoutes}

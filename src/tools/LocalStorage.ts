@@ -1,10 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import keys from '~/config/LocalStorageKeys';
 import { IAsset } from '~/@types';
 
 export const getAssets = async (): Promise<IAsset[]|[]> => {
   return new Promise((resolve) => {
-    AsyncStorage.getItem('@assets')
+    AsyncStorage.getItem(keys.assets)
       .then((result) => {
         if (result !== null) return resolve(JSON.parse(result));
 
@@ -15,14 +16,14 @@ export const getAssets = async (): Promise<IAsset[]|[]> => {
 
 export const editAsset = async (asset: IAsset, indexSelected: number): Promise<IAsset[]> => {
   return new Promise((resolve) => {
-    AsyncStorage.getItem('@assets')
+    AsyncStorage.getItem(keys.assets)
       .then((result) => {
         if (result !== null) {
           const assetsArray = JSON.parse(result);
 
           assetsArray[indexSelected] = asset;
 
-          AsyncStorage.setItem('@assets', JSON.stringify(assetsArray));
+          AsyncStorage.setItem(keys.assets, JSON.stringify(assetsArray));
           resolve(assetsArray);
         }
       });
@@ -31,16 +32,16 @@ export const editAsset = async (asset: IAsset, indexSelected: number): Promise<I
 
 export const saveAsset = async (asset: IAsset): Promise<IAsset[]> => {
   return new Promise((resolve) => {
-    AsyncStorage.getItem('@assets')
+    AsyncStorage.getItem(keys.assets)
       .then((result) => {
         if (result !== null) {
           const assetsArray = JSON.parse(result);
           assetsArray.push(asset);
 
-          AsyncStorage.setItem('@assets', JSON.stringify(assetsArray));
+          AsyncStorage.setItem(keys.assets, JSON.stringify(assetsArray));
           resolve(assetsArray);
         } else {
-          AsyncStorage.setItem('@assets', JSON.stringify([{ ...asset }]));
+          AsyncStorage.setItem(keys.assets, JSON.stringify([{ ...asset }]));
           resolve([{ ...asset }]);
         }
       });

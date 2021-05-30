@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 
 import { resetStackNavigation } from '~/tools/ResetNavigation';
 import { AssetContext } from '~/context/AssetContext';
+import { NotificationContext } from '~/context/NotificationContext';
 
 import {
   Container,
@@ -24,6 +25,7 @@ const Edit: React.FC = ({ route }: any) => {
   const { index } = route.params;
 
   const { asset, handleGetAsset, handleEditAsset } = useContext(AssetContext);
+  const { handleDisplayNotification } = useContext(NotificationContext);
 
   const [ticker, setTicker] = useState<string>('');
   const [amount, setAmount] = useState<string>('');
@@ -32,15 +34,23 @@ const Edit: React.FC = ({ route }: any) => {
   const navigation = useNavigation();
 
   const handleOnSubmitEditAsset = () => {
-    const cutAveragePriceString = averagePrice.slice(2, averagePrice.length);
-    const averagePriceToNumber = Number(cutAveragePriceString.replace(',', '.'));
+    if (ticker !== '' && amount !== '' && averagePrice !== '') {
+      const cutAveragePriceString = averagePrice.slice(2, averagePrice.length);
+      const averagePriceToNumber = Number(cutAveragePriceString.replace(',', '.'));
 
-    handleEditAsset({
-      ticker,
-      quotas: Number(amount),
-      averagePrice: averagePriceToNumber,
-    }, index);
-    resetStackNavigation(navigation, 'TabNavigatorRoutes');
+      handleEditAsset({
+        ticker,
+        quotas: Number(amount),
+        averagePrice: averagePriceToNumber,
+      }, index);
+
+      resetStackNavigation(navigation, 'TabNavigatorRoutes');
+    } else {
+      handleDisplayNotification({
+        message: 'Preencha os campos corretamente.',
+        status: 'error',
+      });
+    }
   };
 
   useEffect(() => {

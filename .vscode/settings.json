@@ -1,0 +1,10 @@
+{
+	"conventionalCommits.scopes": [
+		"assets list",
+		"dividends",
+		"edit",
+		"registration",
+		"splash",
+		"wallet"
+	]
+}

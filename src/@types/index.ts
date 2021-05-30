@@ -1,4 +1,3 @@
-/* eslint-disable no-tabs */
 /* eslint-disable no-unused-vars */
 import { ReactNode } from 'react';
 
@@ -20,8 +19,8 @@ export interface IButtonProps {
 }
 
 export interface IHeaderProps {
-	title: string,
-	value: number,
+  title: string,
+  value: number,
   isWalletScreen?: boolean,
   isDividendsScreen?: boolean,
 }

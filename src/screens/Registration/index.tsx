@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 
 import { resetStackNavigation } from '~/tools/ResetNavigation';
 import { AssetContext } from '~/context/AssetContext';
+import { NotificationContext } from '~/context/NotificationContext';
 
 import {
   Container,
@@ -24,6 +25,7 @@ const Registration: React.FC = ({ route }: any) => {
   const { ticker } = route.params;
 
   const { handleSaveAsset } = useContext(AssetContext);
+  const { handleDisplayNotification } = useContext(NotificationContext);
 
   const [amount, setAmount] = useState<string>('');
   const [averagePrice, setAveragePrice] = useState<string>('');
@@ -31,16 +33,23 @@ const Registration: React.FC = ({ route }: any) => {
   const navigation = useNavigation();
 
   const handleOnSubmitSaveAsset = () => {
-    const cutAveragePriceString = averagePrice.slice(2, averagePrice.length);
-    const averagePriceToNumber = Number(cutAveragePriceString.replace(',', '.'));
+    if (amount !== '' && averagePrice !== '') {
+      const cutAveragePriceString = averagePrice.slice(2, averagePrice.length);
+      const averagePriceToNumber = Number(cutAveragePriceString.replace(',', '.'));
 
-    handleSaveAsset({
-      ticker,
-      quotas: Number(amount),
-      averagePrice: averagePriceToNumber,
-    });
+      handleSaveAsset({
+        ticker,
+        quotas: Number(amount),
+        averagePrice: averagePriceToNumber,
+      });
 
-    resetStackNavigation(navigation, 'TabNavigatorRoutes');
+      resetStackNavigation(navigation, 'TabNavigatorRoutes');
+    } else {
+      handleDisplayNotification({
+        message: 'Preencha os campos corretamente.',
+        status: 'error',
+      });
+    }
   };
 
   return (

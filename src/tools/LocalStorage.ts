@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import keys from '~/config/LocalStorageKeys';
@@ -12,7 +13,7 @@ export const getAssets = async (): Promise<IAsset[]|[]> => {
         return resolve([]);
       });
   });
-}
+};
 
 export const editAsset = async (asset: IAsset, indexSelected: number): Promise<IAsset[]> => {
   return new Promise((resolve) => {
@@ -28,7 +29,7 @@ export const editAsset = async (asset: IAsset, indexSelected: number): Promise<I
         }
       });
   });
-}
+};
 
 export const saveAsset = async (asset: IAsset): Promise<IAsset[]> => {
   return new Promise((resolve) => {
@@ -46,7 +47,7 @@ export const saveAsset = async (asset: IAsset): Promise<IAsset[]> => {
         }
       });
   });
-}
+};
 
 export const deleteAsset = async (indexSelected: number): Promise<IAsset[]|[]> => {
   return new Promise((resolve) => {
@@ -54,11 +55,13 @@ export const deleteAsset = async (indexSelected: number): Promise<IAsset[]|[]> =
       .then((result) => {
         if (result !== null) {
           const assetsArray = JSON.parse(result);
-          const newAssetsArray = assetsArray.filter((item: IAsset, index: number) => index !== indexSelected);
-          
+          const newAssetsArray = assetsArray.filter((item: IAsset, index: number) => (
+            index !== indexSelected
+          ));
+
           AsyncStorage.setItem('@assets', JSON.stringify(newAssetsArray));
           resolve(newAssetsArray);
         }
       });
   });
-}
+};

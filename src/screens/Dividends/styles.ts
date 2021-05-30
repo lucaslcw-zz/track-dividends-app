@@ -8,7 +8,7 @@ export const Container = styled.SafeAreaView`
 export const Title = styled.Text``;
 
 export const List = styled.FlatList.attrs({
-  paddingHorizontal: 15
+  paddingHorizontal: 15,
 })`
   flex: 1;
 `;

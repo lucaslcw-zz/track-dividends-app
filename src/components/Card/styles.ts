@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import { IButtonProps } from '~/@types';
 
 export const Container = styled.View.attrs({
-  shadowColor: "#000",
+  shadowColor: '#000',
   shadowOffset: {
     width: 0,
     height: 2,

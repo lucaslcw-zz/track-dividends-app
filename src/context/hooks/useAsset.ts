@@ -16,26 +16,26 @@ const useContext = () => {
   const handleGetAssets = async () => {
     getAssets()
       .then((result: IAsset[]|[]) => setAssets(result));
-  }
+  };
 
   const handleGetAsset = async (indexSelected: number) => {
     setAsset(assets[indexSelected]);
-  }
+  };
 
   const handleSaveAsset = async (asset: IAsset) => {
     saveAsset(asset)
       .then((result: IAsset[]) => setAssets(result));
-  }
+  };
 
   const handleEditAsset = async (asset: IAsset, indexSelected: number) => {
     editAsset(asset, indexSelected)
       .then((result: IAsset[]) => setAssets(result));
-  }
+  };
 
   const handleDeleteAsset = async (indexSelected: number) => {
     deleteAsset(indexSelected)
       .then((result: IAsset[]|[]) => setAssets(result));
-  }
+  };
 
   return {
     assets,
@@ -46,6 +46,6 @@ const useContext = () => {
     handleEditAsset,
     handleDeleteAsset,
   };
-}
+};
 
 export default useContext;

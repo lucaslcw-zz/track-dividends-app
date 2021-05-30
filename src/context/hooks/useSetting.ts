@@ -9,6 +9,6 @@ const useSetting = () => {
     isVisible,
     handleToggleIsVisible,
   };
-}
+};
 
 export default useSetting;

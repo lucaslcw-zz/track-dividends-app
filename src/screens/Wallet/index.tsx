@@ -1,7 +1,8 @@
 import React, { useMemo, useContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
 
-import { IAsset, IRenderItem } from '~/@types';
+import { totalInvestedBalance } from '~/tools/Calculations';
+import { IRenderItem } from '~/@types';
 import { AssetContext } from '~/context/AssetContext';
 
 import Header from '~/components/Header';
@@ -12,15 +13,11 @@ import { Container, List } from '~/screens/Wallet/styles';
 const WalletScreen: React.FC = () => {
   const { assets } = useContext(AssetContext);
 
-  const investedBalance: number = useMemo(() => {
-    return assets.reduce((accumulator: number, current: IAsset) => {
-      return accumulator + (current.quotas * current.averagePrice);
-    }, 0);
-  }, [assets]);
+  const investedBalance: number = useMemo(() => totalInvestedBalance(assets), [assets]);
 
   return (
     <Container>
-      <StatusBar style='dark' />
+      <StatusBar style="dark" />
       <Header
         title="Valor total investido até o mês de"
         value={investedBalance}
@@ -40,6 +37,6 @@ const WalletScreen: React.FC = () => {
       />
     </Container>
   );
-}
+};
 
 export default WalletScreen;

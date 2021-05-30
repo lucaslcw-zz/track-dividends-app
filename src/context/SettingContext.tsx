@@ -24,6 +24,6 @@ const SettingProvider: React.FC = ({ children }: ISettingContextProviderProps) =
       {children}
     </SettingContext.Provider>
   );
-}
+};
 
 export { SettingContext, SettingProvider };

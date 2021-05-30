@@ -1,9 +1,9 @@
 import React, { useState, useMemo } from 'react';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { AntDesign } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
 
+import { sortAlphabetically } from '~/tools/Sorts';
 import { IRenderItem } from '~/@types';
 import Assets from '~/mock/Assets.json';
 import Card from '~/components/Card';
@@ -27,16 +27,17 @@ const AssetsList: React.FC = () => {
   const navigation = useNavigation();
 
   const filteredData = useMemo(() => {
+    const sorteredData = sortAlphabetically(Assets);
+
     if (asset !== '') {
-      return Assets.filter((item) => item.ticker.includes(asset));
-    } else {
-      return Assets;
+      return sorteredData.filter((item: any) => item.ticker.includes(asset));
     }
-  }, [asset])
+    return sorteredData;
+  }, [asset]);
 
   return (
     <Container>
-      <StatusBar style='dark' />
+      <StatusBar style="dark" />
       <Actions>
         <CloseButton onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back-circle" size={32} color="black" />
@@ -47,10 +48,10 @@ const AssetsList: React.FC = () => {
           <AntDesign name="search1" size={20} color="black" />
         </Icon>
         <Input
-          placeholder='Digite um ativo...'
-          selectionColor='#000'
+          placeholder="Digite um ativo..."
+          selectionColor="#000"
           maxLength={10}
-          placeholderTextColor='#BDBDBD'
+          placeholderTextColor="#BDBDBD"
           onChangeText={(text: string) => setAsset(text.toUpperCase())}
           autoFocus
           value={asset}
@@ -74,6 +75,6 @@ const AssetsList: React.FC = () => {
       </ListContainer>
     </Container>
   );
-}
+};
 
 export default AssetsList;

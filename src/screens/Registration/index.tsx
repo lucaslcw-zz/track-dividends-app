@@ -17,7 +17,7 @@ import {
   Title,
   ButtonContainer,
   Button,
-  ButtonText
+  ButtonText,
 } from '~/screens/Registration/styles';
 
 const Registration: React.FC = ({ route }: any) => {
@@ -31,13 +31,18 @@ const Registration: React.FC = ({ route }: any) => {
   const navigation = useNavigation();
 
   const handleOnSubmitSaveAsset = () => {
-    handleSaveAsset({ ticker, quotas: Number(amount), averagePrice: Number(averagePrice) });
+    handleSaveAsset({
+      ticker,
+      quotas: Number(amount),
+      averagePrice: Number(averagePrice),
+    });
+
     resetStackNavigation(navigation, 'TabNavigatorRoutes');
-  }
+  };
 
   return (
     <Container>
-      <StatusBar style='dark' />
+      <StatusBar style="dark" />
       <Actions>
         <CloseButton onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back-circle" size={32} color="black" />
@@ -49,11 +54,11 @@ const Registration: React.FC = ({ route }: any) => {
       <Label>Quantidade</Label>
       <InputContainer>
         <Input
-          placeholder='Digite a quantidade de cotas...'
-          selectionColor='#000'
+          placeholder="Digite a quantidade de cotas..."
+          selectionColor="#000"
           maxLength={10}
-          keyboardType='number-pad'
-          placeholderTextColor='#BDBDBD'
+          keyboardType="number-pad"
+          placeholderTextColor="#BDBDBD"
           onChangeText={(text: string) => setAmount(text)}
           value={amount}
         />
@@ -61,11 +66,11 @@ const Registration: React.FC = ({ route }: any) => {
       <Label>Preço Médio</Label>
       <InputContainer>
         <Input
-          placeholder='Digite o preço médio das cotas...'
-          selectionColor='#000'
+          placeholder="Digite o preço médio das cotas..."
+          selectionColor="#000"
           maxLength={10}
-          keyboardType='number-pad'
-          placeholderTextColor='#BDBDBD'
+          keyboardType="number-pad"
+          placeholderTextColor="#BDBDBD"
           onChangeText={(text: string) => setAveragePrice(text)}
           value={averagePrice}
         />
@@ -77,6 +82,6 @@ const Registration: React.FC = ({ route }: any) => {
       </ButtonContainer>
     </Container>
   );
-}
+};
 
 export default Registration;

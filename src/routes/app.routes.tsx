@@ -39,29 +39,29 @@ const TabNavigatorRoutes = () => (
 
 const AppRoutes = () => (
   <NavigationContainer>
-    <Stack.Navigator initialRouteName='Splash'>
+    <Stack.Navigator initialRouteName="Splash">
       <Stack.Screen
-        name='Splash'
+        name="Splash"
         component={Splash}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name='TabNavigatorRoutes'
+        name="TabNavigatorRoutes"
         component={TabNavigatorRoutes}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name='AssetsList'
+        name="AssetsList"
         component={AssetsList}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name='Registration'
+        name="Registration"
         component={Registration}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name='Edit'
+        name="Edit"
         component={Edit}
         options={{ headerShown: false }}
       />

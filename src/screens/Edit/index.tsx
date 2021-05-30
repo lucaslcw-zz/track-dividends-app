@@ -17,7 +17,7 @@ import {
   Title,
   ButtonContainer,
   Button,
-  ButtonText
+  ButtonText,
 } from '~/screens/Edit/styles';
 
 const Edit: React.FC = ({ route }: any) => {
@@ -34,7 +34,7 @@ const Edit: React.FC = ({ route }: any) => {
   const handleOnSubmitEditAsset = () => {
     handleEditAsset({ ticker, quotas: Number(amount), averagePrice: Number(averagePrice) }, index);
     resetStackNavigation(navigation, 'TabNavigatorRoutes');
-  }
+  };
 
   useEffect(() => {
     if (asset !== null) {
@@ -52,7 +52,7 @@ const Edit: React.FC = ({ route }: any) => {
 
   return (
     <Container>
-      <StatusBar style='dark' />
+      <StatusBar style="dark" />
       <Actions>
         <CloseButton onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back-circle" size={32} color="black" />
@@ -64,11 +64,11 @@ const Edit: React.FC = ({ route }: any) => {
       <Label>Quantidade</Label>
       <InputContainer>
         <Input
-          placeholder='Digite a quantidade de cotas...'
-          selectionColor='#000'
-          keyboardType='number-pad'
+          placeholder="Digite a quantidade de cotas..."
+          selectionColor="#000"
+          keyboardType="number-pad"
           maxLength={10}
-          placeholderTextColor='#BDBDBD'
+          placeholderTextColor="#BDBDBD"
           onChangeText={(text: string) => setAmount(text)}
           value={amount}
         />
@@ -76,11 +76,11 @@ const Edit: React.FC = ({ route }: any) => {
       <Label>Preço Médio</Label>
       <InputContainer>
         <Input
-          placeholder='Digite o preço médio das cotas...'
-          selectionColor='#000'
-          keyboardType='number-pad'
+          placeholder="Digite o preço médio das cotas..."
+          selectionColor="#000"
+          keyboardType="number-pad"
           maxLength={10}
-          placeholderTextColor='#BDBDBD'
+          placeholderTextColor="#BDBDBD"
           onChangeText={(text: string) => setAveragePrice(text)}
           value={averagePrice}
         />
@@ -92,6 +92,6 @@ const Edit: React.FC = ({ route }: any) => {
       </ButtonContainer>
     </Container>
   );
-}
+};
 
 export default Edit;

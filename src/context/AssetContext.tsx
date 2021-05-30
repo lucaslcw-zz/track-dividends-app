@@ -39,6 +39,6 @@ const AssetProvider: React.FC = ({ children }: IAssetContextProviderProps) => {
       {children}
     </AssetContext.Provider>
   );
-}
+};
 
 export { AssetContext, AssetProvider };

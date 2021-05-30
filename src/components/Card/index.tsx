@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
+import { currencyFormat, numberFormat } from '~/utils/CurrencyFormats';
 import { inDDdays } from '~/utils/DateFormats';
 import { ICardProps } from '~/@types';
 import { AssetContext } from '~/context/AssetContext';
@@ -15,7 +16,7 @@ import {
   Row,
   Column,
   EditButton,
-  DeleteButton
+  DeleteButton,
 } from './styles';
 
 const CardComponent: React.FC<ICardProps> = (props: ICardProps) => {
@@ -24,7 +25,7 @@ const CardComponent: React.FC<ICardProps> = (props: ICardProps) => {
     quotas,
     dividendsPerShare,
     index,
-    payday,
+    paymentDate,
     isDividendsScreen,
     isWalletScreen,
     isModal,
@@ -36,16 +37,34 @@ const CardComponent: React.FC<ICardProps> = (props: ICardProps) => {
   const navigation = useNavigation();
 
   if (isDividendsScreen) {
+    const renderDividendsPerShare = () => {
+      if (dividendsPerShare !== null) {
+        return currencyFormat(quotas * numberFormat(dividendsPerShare));
+      }
+      return 'Não Informado';
+    };
+
+    const renderPaymentDate = () => {
+      if (paymentDate !== null) {
+        return inDDdays(paymentDate);
+      }
+      return 'Não Informado';
+    };
+
     return (
       <Container>
         <Button justifyContent="center" disabled>
           <Row>
             <HeaderText>{ticker}</HeaderText>
-            <HeaderText>{isVisible ? dividendsPerShare : 'R$ ***'}</HeaderText>
+            <HeaderText>{isVisible ? renderDividendsPerShare() : 'R$ ***'}</HeaderText>
           </Row>
           <Row>
-            <FooterText>{isVisible ? quotas : '***'} cotas</FooterText>
-            <FooterText>{inDDdays(payday)}</FooterText>
+            <FooterText>
+              {isVisible ? quotas : '***'}
+              {' '}
+              cotas
+            </FooterText>
+            <FooterText>{renderPaymentDate()}</FooterText>
           </Row>
         </Button>
       </Container>
@@ -58,7 +77,11 @@ const CardComponent: React.FC<ICardProps> = (props: ICardProps) => {
         <Button alignItems="center" justifyContent="space-between" flexDirection="row" disabled>
           <Column>
             <HeaderText>{ticker}</HeaderText>
-            <FooterText>{isVisible ? quotas : '***'} cotas</FooterText>
+            <FooterText>
+              {isVisible ? quotas : '***'}
+              {' '}
+              cotas
+            </FooterText>
           </Column>
           <Row>
             <EditButton onPress={() => navigation.navigate('Edit', { index })}>
@@ -89,6 +112,6 @@ const CardComponent: React.FC<ICardProps> = (props: ICardProps) => {
   }
 
   return null;
-}
+};
 
 export default CardComponent;

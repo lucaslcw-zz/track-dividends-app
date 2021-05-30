@@ -1,11 +1,13 @@
-import { ReactNode } from "react";
+/* eslint-disable no-tabs */
+/* eslint-disable no-unused-vars */
+import { ReactNode } from 'react';
 
 export interface ICardProps {
   ticker: string,
-  quotas?: number,
-  dividendsPerShare?: string,
+  quotas?: any,
+  dividendsPerShare?: any,
   index: number,
-  payday?: number,
+  paymentDate?: any,
   isDividendsScreen?: boolean,
   isWalletScreen?: boolean,
   isModal?: boolean,
@@ -22,6 +24,12 @@ export interface IHeaderProps {
 	value: number,
   isWalletScreen?: boolean,
   isDividendsScreen?: boolean,
+}
+
+export interface IAsset {
+  averagePrice: number,
+  quotas: number,
+  ticker: string,
 }
 
 export interface IAssetContext {
@@ -45,12 +53,6 @@ export interface ISettingContextProviderProps {
 
 export interface IAssetContextProviderProps {
   children?: ReactNode,
-}
-
-export interface IAsset {
-  averagePrice: number,
-  quotas: number,
-  ticker: string,
 }
 
 export interface IRenderItem {

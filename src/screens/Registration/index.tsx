@@ -54,9 +54,16 @@ const Registration: React.FC = ({ route }: any) => {
       <Label>Quantidade</Label>
       <InputContainer>
         <Input
+          type="money"
+          options={{
+            precision: 0,
+            delimiter: '.',
+            unit: '',
+            suffixUnit: '',
+          }}
           placeholder="Digite a quantidade de cotas..."
           selectionColor="#000"
-          maxLength={10}
+          maxLength={7}
           keyboardType="number-pad"
           placeholderTextColor="#BDBDBD"
           onChangeText={(text: string) => setAmount(text)}
@@ -66,6 +73,14 @@ const Registration: React.FC = ({ route }: any) => {
       <Label>Preço Médio</Label>
       <InputContainer>
         <Input
+          type="money"
+          options={{
+            precision: 2,
+            separator: ',',
+            delimiter: '.',
+            unit: 'R$',
+            suffixUnit: '',
+          }}
           placeholder="Digite o preço médio das cotas..."
           selectionColor="#000"
           maxLength={10}

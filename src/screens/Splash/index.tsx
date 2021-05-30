@@ -1,13 +1,6 @@
-/* eslint-disable camelcase */
 import React, { useEffect, useContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useNavigation } from '@react-navigation/native';
-import {
-  useFonts,
-  IBMPlexSans_400Regular,
-  IBMPlexSans_500Medium,
-  IBMPlexSans_600SemiBold,
-} from '@expo-google-fonts/ibm-plex-sans';
 
 import Firebase from '~/services/Firebase';
 import { resetStackNavigation } from '~/tools/ResetNavigation';
@@ -19,12 +12,6 @@ const Splash = () => {
   const { handleGetAssets } = useContext(AssetContext);
 
   const navigation = useNavigation();
-
-  const [fontsLoaded] = useFonts({
-    IBMPlexSans_400Regular,
-    IBMPlexSans_500Medium,
-    IBMPlexSans_600SemiBold,
-  });
 
   const handleLoadApp = () => {
     Firebase.signIn();
@@ -38,8 +25,6 @@ const Splash = () => {
   useEffect(() => {
     handleLoadApp();
   }, []);
-
-  if (!fontsLoaded) return <Container />;
 
   return (
     <Container>

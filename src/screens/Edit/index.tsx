@@ -32,7 +32,14 @@ const Edit: React.FC = ({ route }: any) => {
   const navigation = useNavigation();
 
   const handleOnSubmitEditAsset = () => {
-    handleEditAsset({ ticker, quotas: Number(amount), averagePrice: Number(averagePrice) }, index);
+    const cutAveragePriceString = averagePrice.slice(2, averagePrice.length);
+    const averagePriceToNumber = Number(cutAveragePriceString.replace(',', '.'));
+
+    handleEditAsset({
+      ticker,
+      quotas: Number(amount),
+      averagePrice: averagePriceToNumber,
+    }, index);
     resetStackNavigation(navigation, 'TabNavigatorRoutes');
   };
 
@@ -40,9 +47,11 @@ const Edit: React.FC = ({ route }: any) => {
     if (asset !== null) {
       const { ticker, quotas, averagePrice }: any = asset;
 
+      const averagePriceToFloat = Number(averagePrice).toFixed(2);
+
       setTicker(ticker);
       setAmount(quotas.toString());
-      setAveragePrice(averagePrice.toString());
+      setAveragePrice(averagePriceToFloat.toString());
     }
   }, [asset]);
 
@@ -64,10 +73,17 @@ const Edit: React.FC = ({ route }: any) => {
       <Label>Quantidade</Label>
       <InputContainer>
         <Input
+          type="money"
+          options={{
+            precision: 0,
+            delimiter: '.',
+            unit: '',
+            suffixUnit: '',
+          }}
           placeholder="Digite a quantidade de cotas..."
           selectionColor="#000"
           keyboardType="number-pad"
-          maxLength={10}
+          maxLength={7}
           placeholderTextColor="#BDBDBD"
           onChangeText={(text: string) => setAmount(text)}
           value={amount}
@@ -76,6 +92,14 @@ const Edit: React.FC = ({ route }: any) => {
       <Label>Preço Médio</Label>
       <InputContainer>
         <Input
+          type="money"
+          options={{
+            precision: 2,
+            separator: ',',
+            delimiter: '.',
+            unit: 'R$',
+            suffixUnit: '',
+          }}
           placeholder="Digite o preço médio das cotas..."
           selectionColor="#000"
           keyboardType="number-pad"

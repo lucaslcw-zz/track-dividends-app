@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { TextInputMask } from 'react-native-masked-text';
 
 export const Container = styled.SafeAreaView`
   background: #F7F7F7;
@@ -41,7 +42,7 @@ export const InputContainer = styled.View.attrs({
   margin-bottom: 15px;
 `;
 
-export const Input = styled.TextInput`
+export const Input = styled(TextInputMask)`
   background: #fff;
   border-radius: 10px;
   padding: 10px;

@@ -31,10 +31,13 @@ const Registration: React.FC = ({ route }: any) => {
   const navigation = useNavigation();
 
   const handleOnSubmitSaveAsset = () => {
+    const cutAveragePriceString = averagePrice.slice(2, averagePrice.length);
+    const averagePriceToNumber = Number(cutAveragePriceString.replace(',', '.'));
+
     handleSaveAsset({
       ticker,
       quotas: Number(amount),
-      averagePrice: Number(averagePrice),
+      averagePrice: averagePriceToNumber,
     });
 
     resetStackNavigation(navigation, 'TabNavigatorRoutes');

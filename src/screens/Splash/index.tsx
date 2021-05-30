@@ -9,6 +9,7 @@ import {
   IBMPlexSans_600SemiBold,
 } from '@expo-google-fonts/ibm-plex-sans';
 
+import Firebase from '~/services/Firebase';
 import { resetStackNavigation } from '~/tools/ResetNavigation';
 import { AssetContext } from '~/context/AssetContext';
 
@@ -26,6 +27,7 @@ const Splash = () => {
   });
 
   const handleLoadApp = () => {
+    Firebase.signIn();
     handleGetAssets();
 
     setTimeout(() => {

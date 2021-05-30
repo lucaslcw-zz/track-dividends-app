@@ -38,7 +38,7 @@ export interface IAssetContext {
   handleGetAsset: (indexSelected: number) => void,
   handleSaveAsset: (asset: IAsset) => void,
   handleEditAsset: (asset: IAsset, indexSelected: number) => void,
-  handleDeleteAsset: (indexSelected: number) => void,
+  handleDeleteAsset: (indexSelected: number, ticker: string) => void,
 }
 
 export interface ISettingContext {
@@ -54,7 +54,25 @@ export interface IAssetContextProviderProps {
   children?: ReactNode,
 }
 
+export interface INotificationContext {
+  handleDisplayNotification: ({ message, status }: INotificationParams) => void,
+}
+
+export interface INotificationParams {
+  message: string,
+  status: string,
+}
+
+export interface INotificationProviderProps {
+  children?: ReactNode,
+}
+
 export interface IRenderItem {
   item: IAsset|any,
   index: number,
+}
+
+export interface INotificationProps {
+  animation: any,
+  notification: INotificationParams,
 }

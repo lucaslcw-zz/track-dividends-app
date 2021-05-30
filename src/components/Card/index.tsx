@@ -87,7 +87,7 @@ const CardComponent: React.FC<ICardProps> = (props: ICardProps) => {
             <EditButton onPress={() => navigation.navigate('Edit', { index })}>
               <MaterialIcons name="edit" size={24} color="black" />
             </EditButton>
-            <DeleteButton onPress={() => handleDeleteAsset(index)}>
+            <DeleteButton onPress={() => handleDeleteAsset(index, ticker)}>
               <FontAwesome name="trash" size={24} color="black" />
             </DeleteButton>
           </Row>

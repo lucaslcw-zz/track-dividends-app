@@ -1,8 +1,17 @@
+import {
+  API_KEY,
+  AUTH_DOMAIN,
+  PROJECT_ID,
+  STORAGE_BUCKET,
+  MESSAGING_SENDER_ID,
+  APP_ID,
+} from 'react-native-dotenv';
+
 export default {
-  apiKey: 'AIzaSyAAnpbK0fcrrj5hAdFoFvqwT6NxpcaM45s',
-  authDomain: 'tracking-dividends.firebaseapp.com',
-  projectId: 'tracking-dividends',
-  storageBucket: 'tracking-dividends.appspot.com',
-  messagingSenderId: '255728715519',
-  appId: '1:255728715519:web:4855cc7d2b5b81b48feeca',
+  apiKey: API_KEY,
+  authDomain: AUTH_DOMAIN,
+  projectId: PROJECT_ID,
+  storageBucket: STORAGE_BUCKET,
+  messagingSenderId: MESSAGING_SENDER_ID,
+  appId: APP_ID,
 };
